@@ -1,0 +1,90 @@
+function [] = PlotApproximations(A, u, s, v, mean_A)
+%PLOTAPPROXIMATIONS Plots the different approximations of interest
+movie_size = size(A);
+len = movie_size(2);
+t = (1:len)./20;
+subplot(6,3,1)
+A = (A+mean_A).*(len-1);
+plot3(A(1,:),A(2,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('Original Cam 1')
+subplot(6,3,2)
+plot3(A(3,:),A(4,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('Original Cam 2')
+subplot(6,3,3)
+plot3(A(5,:),A(6,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('Original Cam 3')
+
+approx1 = (u(:,1)*s(1,1)*v(:,1)' + mean_A).*(len-1);
+subplot(6,3,4)
+plot3(approx1(1,:),approx1(2,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('1st Order Approx Cam 1')
+subplot(6,3,5)
+plot3(approx1(3,:),approx1(4,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('1st Order Approx Cam 2')
+subplot(6,3,6)
+plot3(approx1(5,:),approx1(6,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('1st Order Approx Cam 3')
+
+mode2 = (u(:,2)*s(2,2)*v(:,2)' + mean_A).*(len-1);
+subplot(6,3,7)
+plot3(mode2(1,:),mode2(2,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('2nd Mode Cam 1')
+subplot(6,3,8)
+plot3(mode2(3,:),mode2(4,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('2nd Mode Cam 2')
+subplot(6,3,9)
+plot3(mode2(5,:),mode2(6,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('2nd Mode Cam 3')
+
+approx2 = (u(:,1:2)*s(1:2,1:2)*v(:,1:2)' + mean_A).*(len-1);
+subplot(6,3,10)
+plot3(approx2(1,:),approx2(2,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('2nd Order Approx Cam 1')
+subplot(6,3,11)
+plot3(approx2(3,:),approx2(4,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('2nd Order Approx Cam 2')
+subplot(6,3,12)
+plot3(approx2(5,:),approx2(6,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('2nd Order Approx Cam 3')
+
+mode2 = (u(:,3)*s(3,3)*v(:,3)' + mean_A).*(len-1);
+subplot(6,3,13)
+plot3(mode2(1,:),mode2(2,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('3rd Mode Cam 1')
+subplot(6,3,14)
+plot3(mode2(3,:),mode2(4,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('3rd Mode Cam 2')
+subplot(6,3,15)
+plot3(mode2(5,:),mode2(6,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('3rd Mode Cam 3')
+
+approx2 = (u(:,1:3)*s(1:3,1:3)*v(:,1:3)' + mean_A).*(len-1);
+subplot(6,3,16)
+plot3(approx2(1,:),approx2(2,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('3rd Order Approx Cam 1')
+subplot(6,3,17)
+plot3(approx2(3,:),approx2(4,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('3rd Order Approx Cam 2')
+subplot(6,3,18)
+plot3(approx2(5,:),approx2(6,:),t)
+set(gca,'Ylim',[100 400],'Xlim',[200 500])
+title('3rd Order Approx Cam 3')
+
+end
